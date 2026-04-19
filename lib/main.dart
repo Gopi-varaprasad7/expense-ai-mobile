@@ -1,4 +1,5 @@
 import 'package:fintraq/core/constants/app_colors.dart';
+import 'package:fintraq/features/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,6 +23,7 @@ class FintraqApp extends StatelessWidget {
           background: AppColors.background,
         ),
       ),
+      home: const HomeScreen(),
     );
   }
 }

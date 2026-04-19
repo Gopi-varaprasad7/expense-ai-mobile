@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-  bool is_INR = true;
+  bool _isINR = true;
 
   //sample data
   final double _totalBalance = 5088.24;
@@ -40,21 +40,112 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   _buildTopBar(),
                   const SizedBox(height: 20),
-                  _buildGreeting(),
-                  const SizedBox(height: 16),
-                  _buildBalanceCard(),
-                  const SizedBox(height: 14),
-                  _buildIncomeExpenseRow(),
-                  const SizedBox(height: 14),
-                  _buildCategoryCard(),
-                  const SizedBox(height: 14),
-                  _buildRecentTransactions(),
+                  // _buildGreeting(),
+                  // const SizedBox(height: 16),
+                  // _buildBalanceCard(),
+                  // const SizedBox(height: 14),
+                  // _buildIncomeExpenseRow(),
+                  // const SizedBox(height: 14),
+                  // _buildCategoryCard(),
+                  // const SizedBox(height: 14),
+                  // _buildRecentTransactions(),
                 ],
               ),
             ),
           ),
-          Positioned(bottom: 0, left: 0, right: 0, child: _buildBottomNav()),
+          // Positioned(bottom: 0, left: 0, right: 0, child: _buildBottomNav()),
         ],
+      ),
+    );
+  }
+
+  Widget _buildTopBar() {
+    return Row(
+      children: [
+        Container(
+          width: 36,
+          height: 36,
+          decoration: BoxDecoration(
+            color: AppColors.green,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Icon(
+            Icons.layers_rounded,
+            color: AppColors.background,
+            size: 18,
+          ),
+        ),
+        const SizedBox(width: 10),
+        const Text(
+          'Fintraq',
+          style: TextStyle(
+            color: AppColors.textPrimary,
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+            letterSpacing: -0.3,
+          ),
+        ),
+        const Spacer(),
+        Container(
+          padding: EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            color: AppColors.surface,
+            border: Border.all(color: AppColors.border),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Row(
+            children: [
+              _currencyBtn('USD', !_isINR),
+              _currencyBtn('INR', _isINR),
+            ],
+          ),
+        ),
+        const SizedBox(width: 10),
+        //Avatar
+        Container(
+          width: 34,
+          height: 35,
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [AppColors.green, Color(0xFF00A86B)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: Text(
+              _userName[0],
+              style: TextStyle(
+                color: AppColors.background,
+                fontWeight: FontWeight.w700,
+                fontSize: 13,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _currencyBtn(String label, bool active) {
+    return GestureDetector(
+      onTap: () => setState(() => _isINR = label == 'INR'),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+        decoration: BoxDecoration(
+          color: active ? AppColors.green : Colors.transparent,
+          borderRadius: BorderRadius.circular(14),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: active ? AppColors.background : AppColors.textSecondary,
+            fontSize: 11,
+            fontWeight: active ? FontWeight.w700 : FontWeight.w400,
+          ),
+        ),
       ),
     );
   }

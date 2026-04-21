@@ -53,9 +53,7 @@ class BalanceCard extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Column(
-            // Changed from Row to Column
-            crossAxisAlignment:
-                CrossAxisAlignment.start, // Aligns both to the left
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 '$currencySymbol${totalBalance.toStringAsFixed(2)}',
@@ -66,11 +64,8 @@ class BalanceCard extends StatelessWidget {
                   letterSpacing: -1,
                 ),
               ),
-              const SizedBox(
-                height: 8,
-              ), // Changed width to height for vertical spacing
+              const SizedBox(height: 8),
               Container(
-                // Removed margin bottom since it's now in a Column
                 padding: const EdgeInsets.symmetric(
                   horizontal: 10,
                   vertical: 4,

@@ -1,4 +1,5 @@
 import 'package:fintraq/core/constants/app_colors.dart';
+import 'package:fintraq/features/home/widget/balance_card.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -40,9 +41,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   _buildTopBar(),
                   const SizedBox(height: 20),
-                  // _buildGreeting(),
-                  // const SizedBox(height: 16),
-                  // _buildBalanceCard(),
+                  _buildGreeting(),
+                  const SizedBox(height: 16),
+                  BalanceCard(
+                    totalBalance: 5088.24,
+                    budget: 8000.00,
+                    currencySymbol: '',
+                  ),
                   // const SizedBox(height: 14),
                   // _buildIncomeExpenseRow(),
                   // const SizedBox(height: 14),
@@ -147,6 +152,28 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildGreeting() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          '$_greeting,$_userName',
+          style: TextStyle(color: AppColors.textSecondary, fontSize: 13),
+        ),
+        const SizedBox(height: 2),
+        const Text(
+          'Here is your snapshot',
+          style: TextStyle(
+            color: AppColors.textPrimary,
+            fontSize: 22,
+            fontWeight: FontWeight.w700,
+            letterSpacing: -0.5,
+          ),
+        ),
+      ],
     );
   }
 }

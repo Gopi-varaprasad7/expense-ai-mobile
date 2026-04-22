@@ -1,5 +1,6 @@
 import 'package:fintraq/core/constants/app_colors.dart';
 import 'package:fintraq/features/home/widget/balance_card.dart';
+import 'package:fintraq/features/home/widget/income_expense_row.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -48,8 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     budget: 8000.00,
                     currencySymbol: '',
                   ),
-                  // const SizedBox(height: 14),
-                  // _buildIncomeExpenseRow(),
+                  const SizedBox(height: 14),
+                  IncomeExpenseRow(income: 20000, expense: 17000),
                   // const SizedBox(height: 14),
                   // _buildCategoryCard(),
                   // const SizedBox(height: 14),
